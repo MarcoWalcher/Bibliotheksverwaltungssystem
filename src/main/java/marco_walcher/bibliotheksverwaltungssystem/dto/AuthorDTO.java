@@ -1,4 +1,4 @@
-package marco_walcher.bibliotheksverwaltungssystem.model;
+package marco_walcher.bibliotheksverwaltungssystem.dto;
 
 import java.sql.Date;
 
