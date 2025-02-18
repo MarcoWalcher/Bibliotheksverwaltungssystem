@@ -1,11 +1,11 @@
-package marco_walcher.bibliotheksverwaltungssystem.model.base;
+package marco_walcher.bibliotheksverwaltungssystem.service;
 
 import java.sql.*;
 
-public class DatabaseConnector {
+public class DatabaseConnectorService {
 
     //region <Properties>
-    private static DatabaseConnector instance;
+    private static DatabaseConnectorService instance;
 
     private final String url = "jdbc:mysql://localhost:3306/Library";
     private String dbUser = null;
@@ -17,15 +17,15 @@ public class DatabaseConnector {
     //endregion
 
     //region <Constructor>
-    private DatabaseConnector() {
+    private DatabaseConnectorService() {
         setDbLoginfromEnv();
     }
     //enregion
 
     //region <Getter/Setter>
-    public static DatabaseConnector getInstance() {
+    public static DatabaseConnectorService getInstance() {
         if (instance == null) {
-            instance = new DatabaseConnector();
+            instance = new DatabaseConnectorService();
         }
         return instance;
     }
@@ -40,9 +40,9 @@ public class DatabaseConnector {
     }
 
     public ResultSet getDbData(String query) {
-        DatabaseConnector.instance.openDbConnection();
-        ResultSet dbData = DatabaseConnector.instance.executeQuery(query);
-        DatabaseConnector.instance.closeDbConnection();
+        DatabaseConnectorService.instance.openDbConnection();
+        ResultSet dbData = DatabaseConnectorService.instance.executeQuery(query);
+        DatabaseConnectorService.instance.closeDbConnection();
         return dbData;
     }
     //enregion
